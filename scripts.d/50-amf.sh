@@ -1,14 +1,14 @@
 #!/bin/bash
 
-AMF_REPO="https://github.com/GPUOpen-LibrariesAndSDKs/AMF.git"
-AMF_COMMIT="053040d662b4d88d9994dc706b948ee409292537"
+SCRIPT_REPO="https://github.com/GPUOpen-LibrariesAndSDKs/AMF.git"
+SCRIPT_COMMIT="5c78f194a396938ff0e72128712252151238e372"
 
 ffbuild_enabled() {
     return 0
 }
 
 ffbuild_dockerbuild() {
-    git-mini-clone "$AMF_REPO" "$AMF_COMMIT" amf
+    git-mini-clone "$SCRIPT_REPO" "$SCRIPT_COMMIT" amf
     cd amf
 
     mkdir -p "$FFBUILD_PREFIX"/include

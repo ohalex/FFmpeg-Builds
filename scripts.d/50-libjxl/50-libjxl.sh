@@ -1,7 +1,7 @@
 #!/bin/bash
 
-JXL_REPO="https://github.com/libjxl/libjxl.git"
-JXL_COMMIT="bd48652dba3469244af489e48c645307191cc039"
+SCRIPT_REPO="https://github.com/libjxl/libjxl.git"
+SCRIPT_COMMIT="88507d12340bee9c51d5ec3c6a6a883b72b62281"
 
 ffbuild_enabled() {
     [[ $ADDINS_STR == *4.4* ]] && return -1
@@ -10,7 +10,7 @@ ffbuild_enabled() {
 }
 
 ffbuild_dockerbuild() {
-    git-mini-clone "$JXL_REPO" "$JXL_COMMIT" jxl
+    git-mini-clone "$SCRIPT_REPO" "$SCRIPT_COMMIT" jxl
     cd jxl
     git submodule update --init --recursive --depth 1 --recommend-shallow third_party/{highway,skcms}
 
@@ -41,10 +41,6 @@ ffbuild_dockerbuild() {
     if [[ $TARGET == win* ]]; then
         echo "Libs.private: -ladvapi32" >> "${FFBUILD_PREFIX}"/lib/pkgconfig/libjxl.pc
         echo "Libs.private: -ladvapi32" >> "${FFBUILD_PREFIX}"/lib/pkgconfig/libjxl_threads.pc
-
-        mv "${FFBUILD_PREFIX}"/lib/libjxl{-static,}.a
-        mv "${FFBUILD_PREFIX}"/lib/libjxl_dec{-static,}.a
-        mv "${FFBUILD_PREFIX}"/lib/libjxl_threads{-static,}.a
     fi
 }
 
