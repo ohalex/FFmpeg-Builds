@@ -70,7 +70,7 @@ cat <<EOF >"$BUILD_SCRIPT"
         --extra-cflags='$FF_CFLAGS' --extra-cxxflags='$FF_CXXFLAGS' \
         --extra-ldflags='$FF_LDFLAGS' --extra-ldexeflags='$FF_LDEXEFLAGS' --extra-libs='$FF_LIBS' \
         --extra-version="\$(date +%Y%m%d)"  --disable-ffprobe --disable-ffplay --disable-doc --disable-avdevice \
-        --disable-coreimage --enable-libx264 --disable-appkit --disable-avfoundation
+        --disable-coreimage  --disable-appkit --disable-avfoundation
     make -j\$(nproc) V=1
     make install install-doc
 EOF
